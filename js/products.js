@@ -68,9 +68,8 @@ const app = createApp({
     updateProduct() {
       let url = `${this.apiUrl}/api/${this.path}/admin/product`
       let method = 'post';
-
       // 修改後的更新
-      if (!this.isNew){
+      if (this.isNew === 'edit'){
         url = `${this.apiUrl}/api/${this.path}/admin/product/${this.tempProduct.id}`
         method = 'put';
       }
