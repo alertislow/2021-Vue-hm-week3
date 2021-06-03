@@ -2,14 +2,14 @@
 // Vue3 esm.cdn
 import { createApp } from 'https://cdnjs.cloudflare.com/ajax/libs/vue/3.0.9/vue.esm-browser.js';
 
-const App = createApp({
+const app = createApp({
   data() {
     return {
       apiUrl: 'https://vue3-course-api.hexschool.io',
       path: 'dogezad',
       products: [],
       tempProduct: {   // 修改產品時的預設結構
-        imagesUrl: [],
+        //imagesUrl: [],
       },
     }
   },
@@ -22,16 +22,19 @@ const App = createApp({
   },
   methods: {
     getProduct() {
-      const url = `${this.apiUrl}/${this.path/admin/products}`
+      const url = `${this.apiUrl}/${this.path}/admin/products`;
       axios.get(url)
         .then(res =>{
           console.log(res);
           if(res.data.success) {
             this.products = res.data.products;
           }else {
-            alert('res.data.message');
+            alert(res.data.message);
           }
         })
+    },
+    createProduct() {
+
     },
     // 刪除產品
     delProduct() {
@@ -41,4 +44,4 @@ const App = createApp({
   },
 });
 
-App.mount('#app');
+app.mount('#app');
